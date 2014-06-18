@@ -13,6 +13,12 @@ ifdef BUILDTYPE_RELEASE
     ROM_BUILDTYPE := RELEASE
 endif
 
+ifdef OMNI_EXTRAVERSION
+    # Remove leading dash from OMNI_EXTRAVERSION
+    OMNI_EXTRAVERSION := $(shell echo $(OMNI_EXTRAVERSION) | sed 's/-//')
+    ROM_BUILDTYPE := $(OMNI_EXTRAVERSION)
+endif
+
 ifndef ROM_BUILDTYPE
     ROM_BUILDTYPE := HOMEMADE
 endif
